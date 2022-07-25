@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS Class Binding....Example </title>
+    <script src="https://unpkg.com/vue@3"></script>
+<style>
+    .red{
+        background:red;
+        width: 100px;
+        height: 100px;
+    }
+    .green{
+        background:green;
+        width: 100px;
+        height: 100px;
+    }
+    .gray{
+        background:gray;
+        width: 100px;
+        height: 100px;
+    }
+
+    .active{
+        background:black;
+        font-weight: bold;
+        color:white
+    }
+</style>
+</head>
+<body>
+    <div id="app">
+        <button type="button" :class="{active:activeclass == 'red'}" @click="setclass('red')" class="btn btn-primary">Set RED</button>
+        <button type="button" :class="{active:activeclass== 'green'}" @click="setclass('green')" class="btn btn-primary">Set Green</button>
+
+        <div :class="activeclass">
+            <p></p>
+        </div>
+    </div>
+
+
+    <script>
+        const {createApp} = Vue 
+
+        const main = createApp({
+            data(){
+                return{
+                    activeclass:"gray",
+                }
+            },
+
+            methods:{
+                setclass(classname){
+                    //alert(classname);
+                    this.activeclass=classname;
+                }
+            }
+
+
+
+
+        });
+
+        main.mount('#app');
+
+
+
+
+    </script>
+</body>
+</html>
