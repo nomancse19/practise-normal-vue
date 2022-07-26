@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS Class Binding....Example </title>
+    <script src="https://unpkg.com/vue@3"></script>
+<style>
+    .red{
+        background:red;
+        width: 100px;
+        height: 100px;
+    }
+    .green{
+        background:green;
+        width: 100px;
+        height: 100px;
+    }
+    .gray{
+        background:gray;
+        width: 100px;
+        height: 100px;
+    }
+
+    .active{
+        background:black;
+        font-weight: bold;
+        color:white
+    }
+
+    .card{
+        width: 100px;
+        height:100px;
+    }
+
+</style>
+</head>
+<body>
+    <div id="app">
+        <div style="float:left ;">
+            <input type="text" v-model="bgcolor">
+            <div class="card" :style="{background:bgcolor}">
+        </div>
+     
+        <hr>
+        <hr>
+        <div style="float:left;">
+            <button @click="fontsize++">Increase Size</button>
+            <button @click="decrease()">Decrease Size</button>
+            <p :style="{fontSize:fontsize +'px'}">Hello This Noman , Size is-{{ fontsize }}</p>
+        </div>
+      
+       </div>
+    </div>
+
+
+    <script>
+        const {createApp} = Vue 
+
+        const main = createApp({
+            data(){
+                return{
+                    bgcolor:"",
+                    fontsize:30,
+
+                }
+            },
+
+            methods:{
+                setclass(classname){
+                    //alert(classname);
+                    this.activeclass=classname;
+                },
+
+              increse:function(){ // Not USe This Method.
+                this.fontsize++; // Not USe This Method.
+              },
+
+              decrease(){
+                this.fontsize--;
+              },
+
+            
+
+
+
+
+
+            },
+
+        
+
+
+
+        });
+
+        main.mount('#app');
+
+
+
+
+    </script>
+</body>
+</html>
