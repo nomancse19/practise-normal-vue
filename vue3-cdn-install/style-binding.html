@@ -46,9 +46,9 @@
         <hr>
         <hr>
         <div style="float:left;">
-            <button style="padding:10px 0px 10px ;">Increase Size</button>
-            <button style="padding:10px ;">Decrease Size</button>
-            <p :style="{fontsize:fontsize +'px'}">Hello This Noman , Size is-{{ fontsize }}</p>
+            <button @click="fontsize++">Increase Size</button>
+            <button @click="decrease()">Decrease Size</button>
+            <p :style="{fontSize:fontsize +'px'}">Hello This Noman , Size is-{{ fontsize }}</p>
         </div>
       
        </div>
@@ -61,8 +61,9 @@
         const main = createApp({
             data(){
                 return{
-                    bgcolor:"red",
+                    bgcolor:"",
                     fontsize:30,
+
                 }
             },
 
@@ -70,9 +71,25 @@
                 setclass(classname){
                     //alert(classname);
                     this.activeclass=classname;
-                }
-            }
+                },
 
+              increse:function(){ // Not USe This Method.
+                this.fontsize++; // Not USe This Method.
+              },
+
+              decrease(){
+                this.fontsize--;
+              },
+
+            
+
+
+
+
+
+            },
+
+        
 
 
 
