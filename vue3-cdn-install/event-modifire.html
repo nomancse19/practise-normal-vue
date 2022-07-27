@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS Event Modifire....Example </title>
+    <script src="https://unpkg.com/vue@3"></script>
+<style>
+    .red{
+        background:red;
+        width: 100px;
+        height: 100px;
+    }
+    .green{
+        background:green;
+        width: 100px;
+        height: 100px;
+    }
+    .gray{
+        background:gray;
+        width: 100px;
+        height: 100px;
+    }
+
+    .active{
+        background:black;
+        font-weight: bold;
+        color:white
+    }
+</style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="Enter You Name" @keyup="handleKeyUp">
+        <p>Your Name Is : {{ name }}</p>
+    </div>
+
+
+    <script>
+        const {createApp} = Vue 
+
+        const main = createApp({
+            data(){
+                return{
+                    name:"",
+                }
+            },
+
+            methods:{
+                handleKeyUp(e){
+                    //console.log(e.target.value);
+                    this.name=e.target.value;
+                }
+            }
+
+
+        });
+
+        main.mount('#app');
+
+
+
+
+    </script>
+</body>
+</html>
