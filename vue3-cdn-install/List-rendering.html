@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS List Rendering ....Example </title>
+    <script src="https://unpkg.com/vue@3"></script>
+<style>
+    .red{
+        background:red;
+        width: 100px;
+        height: 100px;
+    }
+    .green{
+        background:green;
+        width: 100px;
+        height: 100px;
+    }
+    .gray{
+        background:gray;
+        width: 100px;
+        height: 100px;
+    }
+
+    .active{
+        background:black;
+        font-weight: bold;
+        color:white
+    }
+</style>
+</head>
+<body>
+    <div id="app">
+        <h1>Your Skills Are </h1>
+        <input type="text" v-model="enter_skills" @keyup.enter="addNewSkills">
+        <button @click="addNewSkills">Add New Skills</button>
+        <ul>
+            <li v-for="(new_skills,index) in skills">
+               {{ index+1 }} {{ new_skills.name }} ------ <span style="color:black;cursor:pointer;background:rgb(248, 94, 94);" @click="removeSkills(index)">Remove</span>
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+        const {createApp} = Vue 
+
+        const main = createApp({
+            data(){
+                return{
+                    skills:[
+                        {name:'Html',age:20},
+                        {name:'CSS',age:25},
+                        {name:'PHP',age:30},
+                        {name:'JAVA',age:45},
+                    ] ,
+                    enter_skills:'',
+                }
+            },
+
+            methods:{
+             addNewSkills(){
+                this.skills.push(this.enter_skills);
+                this.enter_skills='';
+             },
+
+             removeSkills(item){
+                //alert(item);
+                this.skills.splice(item,1);
+             },
+
+
+
+            }
+
+
+        });
+
+        main.mount('#app');
+
+
+
+
+    </script>
+</body>
+</html>

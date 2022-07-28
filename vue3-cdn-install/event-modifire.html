@@ -32,8 +32,13 @@
 </head>
 <body>
     <div id="app">
-        <input type="text" placeholder="Enter You Name" @keyup="handleKeyUp">
+    <form @submit="handleSubmitForm">
+       <!--<input type="text" placeholder="Enter You Name" @keyup.enter="handleKeyUp">--> 
+       <input type="text" placeholder="Enter You Name" @keyup="handleKeyUp">
         <p>Your Name Is : {{ name }}</p>
+
+        <button type="submit">Submit Form</button>
+    </form>
     </div>
 
 
@@ -51,7 +56,15 @@
                 handleKeyUp(e){
                     //console.log(e.target.value);
                     this.name=e.target.value;
+                },
+
+                handleSubmitForm(e){
+                    alert("Form Submited...");
+                    e.preventDefault();
                 }
+
+
+
             }
 
 
