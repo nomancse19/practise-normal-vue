@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue JS List Rendering ....Example </title>
+    <title>Vue JS List Rendering With Key In Loop ....Example </title>
     <script src="https://unpkg.com/vue@3"></script>
 <style>
     .red{
@@ -36,8 +36,12 @@
         <input type="text" v-model="enter_skills.name" @keyup.enter="addNewSkills">
         <button @click="addNewSkills">Add New Skills</button>
         <ul>
-            <li v-for="(new_skills,index) in skills">
-               {{ index+1 }} {{ new_skills.name }}---{{ new_skills.age }} ------ <span style="color:black;cursor:pointer;background:rgb(248, 94, 94);" @click="removeSkills(index)">Remove</span>
+            <li v-for="(new_skills,index) in skills" :key="new_skills.name"> <!--  -->
+        
+               {{ index+1 }} {{ new_skills.name }}---{{ new_skills.age }} ------ <span style="color:black;cursor:pointer;background:rgb(248, 94, 94);"  @click="removeSkills(index)">Remove</span>
+            <br>
+            <br>
+               <input type="text" placeholder="Remark" @click.stop>
             </li>
         </ul>
     </div>
@@ -54,7 +58,9 @@
                         {name:'CSS',age:25},
                         {name:'PHP',age:30},
                         {name:'JAVA',age:45},
+
                     ] ,
+                    remark:'',
                     enter_skills:{},
                 }
             },

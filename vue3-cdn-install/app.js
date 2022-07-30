@@ -17,6 +17,8 @@ methods:{
     show_data:function(){
         return this.count=this.count+1;
     }
+    
+
 }
 });
 

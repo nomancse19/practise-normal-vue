@@ -40,6 +40,8 @@
                {{ index+1 }} {{ new_skills.name }}---{{ new_skills.age }} ------ <span style="color:black;cursor:pointer;background:rgb(248, 94, 94);" @click="removeSkills(index)">Remove</span>
             </li>
         </ul>
+
+        <p>Total Skills : {{ count_all_skills }}</p>
     </div>
 
 
@@ -59,6 +61,16 @@
                 }
             },
 
+            
+            computed:{
+                count_all_skills(){
+                console.log("Count From Method....");
+                return this.skills.length;
+             }
+            },
+
+
+
             methods:{
              addNewSkills(){
                 this.skills.push({name:this.enter_skills,age:0});
@@ -70,9 +82,12 @@
                 this.skills.splice(item,1);
              },
 
+            
 
 
-            }
+
+            },
+
 
 
         });
