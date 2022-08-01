@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS List Rendering ....Example </title>
+    <script src="https://unpkg.com/vue@3"></script>
+<style>
+    .red{
+        background:red;
+        width: 100px;
+        height: 100px;
+    }
+    .green{
+        background:green;
+        width: 100px;
+        height: 100px;
+    }
+    .gray{
+        background:gray;
+        width: 100px;
+        height: 100px;
+    }
+
+    .active{
+        background:black;
+        font-weight: bold;
+        color:white
+    }
+
+    .seats {
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px solid gray;
+  padding: 3px; */
+  margin-top: 11px;
+}
+
+.seat {
+  margin: 4px;
+  border: 1px solid gray;
+  padding: 3px;
+  min-height: 11px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 28px;
+}
+
+.seat:nth-child(4n -2) {
+  margin-right: 12px;
+}
+
+.seat:nth-child(4n -1) {
+  margin-left: 12px;
+}
+
+.seat--sold {
+  background-color: red;
+  color: #fff;
+}
+
+.seat--booked {
+  background-color: gray;
+}
+
+.seat--selected {
+  background-color: #00ff00;
+}
+.Disabled{
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+    <div id="app">
+        <div class="seats">
+            <div
+            class="seat"
+            :class="{
+                'seat--sold': seats.type === 'sold',
+                'seat--booked': seats.type === 'booked',
+                'seat--selected': seats.type === 'selected',
+                'Disabled': seats.type === 'sold',
+                
+            }"
+              v-for="(seats, i) in seat"
+              :key="seats.name"
+              @click="handleClick(i)"
+            >
+              {{seats.name}}
+            </div>
+        </div>
+
+
+        <div v-for="(select_seat,index) in selectedseat">
+            {{ select_seat.name }}
+            {{ select_seat.price }}
+        </div>
+    </div>
+
+
+    <script>
+        const {createApp} = Vue 
+
+        const main = createApp({
+            data(){
+                return{
+                   seat:[
+                    {
+                        name:"A1",
+                        type:"available",
+                        price:750,
+                    },
+                    {
+                        name:"A2",
+                        type:"booked",
+                        price:750,
+                    },
+                    {
+                        name:"A3",
+                        type:"available",
+                        price:850,
+                    },
+                    {
+                        name:"B1",
+                        type:"sold",
+                        price:500,
+                    },
+                    {
+                        name:"B2",
+                        type:"booked",
+                        price:650,
+                    },
+                   ]
+
+
+                };
+            },
+
+            
+            computed:{
+                selectedseat(){
+                    let sc= this.seat.filter(function(item){
+                        return item.type==='selected'
+                    });
+                    console.log(sc);
+                    return sc;
+                }
+            },
+
+
+
+            methods:{
+                handleClick(e){
+                   let clickseat= this.seat[e];
+                    
+                   
+                   clickseat.type = clickseat.type === "selected" ? "available" : "selected";
+                   //console.log(clickseat);
+                }
+
+
+            },
+
+
+
+        });
+
+        main.mount('#app');
+
+
+
+
+    </script>
+</body>
+</html>
