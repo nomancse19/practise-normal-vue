@@ -9,10 +9,17 @@
 <body>
     <script>
       var func=  function(name,number){
-            return "Hello "+name+ ""+;
+            return "Hello "+name+ " And Your Age is "+number;
         }
 
-        console.log(func("Noman"));
+        //console.log(func("Noman",28));
+
+
+        var ar_func=(data)=>{
+            console.log("Hello I Am from Arrow Function");
+            console.log(data);
+        }
+        ar_func(25);
         
     </script>
 </body>
