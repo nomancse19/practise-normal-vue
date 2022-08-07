@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS List Rendering ....Example </title>
+    <script src="https://unpkg.com/vue@3"></script>
+<style>
+    .red{
+        background:red;
+        width: 100px;
+        height: 100px;
+    }
+    .green{
+        background:green;
+        width: 100px;
+        height: 100px;
+    }
+    .gray{
+        background:gray;
+        width: 100px;
+        height: 100px;
+    }
+
+    .active{
+        background:black;
+        font-weight: bold;
+        color:white
+    }
+</style>
+</head>
+<body>
+    <div id="app">
+        <p>Enter Your Mobile Number</p>
+        <input :style="{background:success}" 
+        type="text" 
+        v-model="mobile" 
+        placeholder="Enter Mobile Number"
+        @keyup='charCount()'
+        />
+        <span>{{ reduce_count }}</span>
+        <h3>Your Input Data : {{ mobile }}</h3>
+    </div>
+
+
+    <script>
+        const {createApp} = Vue 
+
+        const main = createApp({
+            data(){
+                return{
+                    mobile:"",
+                    count:11,
+                    all_count:'',
+                    success:'blue',
+                    
+                }
+            },
+
+            
+            
+
+            computed:{
+                reduce_count(){
+                    let a = this.count-this.all_count;
+                    if(a>=0){
+                        return a;
+                    }else{
+                        return 0;
+                    }
+                }
+            },
+
+            methods:{
+                charCount(){
+                    this.all_count= this.mobile.length;
+                }
+            },
+            watch:{
+                mobile(newValue,oldValue){
+                    console.log(oldValue);
+                   
+                  if(isNaN(newValue)){
+                   
+                    alert("Enter A Valid Number...");
+                    this.mobile=oldValue;
+                    this.success='red';
+                  }
+                  else if(newValue.length>11){
+                    //alert("Your Number Must Be 11 Digit...");
+                    //this.mobile=oldValue;
+                    this.success='red';
+                  }else{
+                    this.success='blue';
+                }
+
+                }
+            }
+
+
+
+
+
+        });
+
+        main.mount('#app');
+
+
+
+
+    </script>
+</body>
+</html>
