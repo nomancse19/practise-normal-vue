@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS Make New Component</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <h1>Hello This Vue JS Make Component </h1>
+    <div id="main">
+{{ msg }}
+
+<noman-details></noman-details>
+
+    </div>
+
+
+    <script>
+        const main = Vue.createApp({
+            data(){
+                return{
+                    msg:"Hello Noman",
+                };
+            },
+            methods:{
+
+            },
+
+            computed:{
+
+            },
+
+            watch:{
+
+            },
+
+        });
+
+
+        main.component('noman-details',{
+            data(){
+                return{
+                    name: "Jahidul Islam Noman",
+                };
+            },
+            template:`
+                    <h1>Name : {{ name }}</h1>
+                    <p>Address: D.C Roy Road Mitford</p>
+                    <p>Department: IT </p> `
+        });
+
+        main.mount("#main");
+
+    </script>
+</body>
+</html>
